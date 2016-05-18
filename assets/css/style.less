@@ -537,8 +537,12 @@ svg { border: 4px solid @beige; border-left: 0px;
 		.dsidx-data {	padding-left: 30px;}
 		.dsidx-primary-data {	display: table; width: 100%;
 			.dsidx-price, .dsidx-address {	display: inline-block;}
-			.dsidx-address {	max-width: 60%; padding: 10px 10px 10px 0;}
-			.dsidx-price {	float: right; background-color: @navy; color: white;.fg-demi; padding: 10px 20px;}
+			.dsidx-address {	max-width: 60%; padding: 10px 10px 10px 0;
+				@media @tablet {	max-width: none;}
+			}
+			.dsidx-price {	float: right; background-color: @navy; color: white;.fg-demi; padding: 10px 20px;
+				@media @tablet {	float: none;}
+			}
 		}
 
 		.dsidx-photo { position: relative; overflow: hidden;
@@ -550,6 +554,7 @@ svg { border: 4px solid @beige; border-left: 0px;
 		.dsidx-secondary-data {	padding: 0; width: 60%;
 			.dsidx-secondary-data-line, .dsidx-secondary-data-mls-number, .dsidx-listing-tag {	padding: 10px 30px 10px 0; border-bottom: 2px solid @navy;}
 			.dsidx-secondary-data-mls-number {	border-bottom: 0;}
+			@media @tablet {	width: 100%;}
 		}
 	}
 }
