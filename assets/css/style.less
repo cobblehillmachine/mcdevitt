@@ -519,16 +519,42 @@ svg { border: 4px solid @beige; border-left: 0px;
 #dsidx-listings .dsidx-listing .dsidx-listing-tag {	float: none; padding: 0; color: @primary; background-color: transparent; background: transparent;  margin: 0; font-weight: normal; font-size: 18px;line-height: normal; text-align: left;}
 #dsidx-listings .dsidx-listing .dsidx-listing-tag.dsidx-tag-reo, #dsidx-listings .dsidx-listing .dsidx-listing-tag.dsidx-tag-pre-foreclosure {	background: transparent;}
 #dsidx-listings .dsidx-listing .dsidx-listing-tag.dsidx-tag-pre-foreclosure {	text-align: left;}
-
+#dsidx-listings .dsidx-listing {	border-bottom: 0; border-radius: 0;}
 
 
 
 #dsidx #dsidx-map {background-color: white; outline: 4px solid @dark-gray; border: 15px solid white; }
 #dsidx-listings li.dsidx-listing-container { border: 4px solid @dark-gray; padding: 15px; margin-bottom: 30px; background-color: white; text-align: left;
-	.dsidx-secondary-data-mls-number {	display: none;}
+	// .dsidx-secondary-data-mls-number {	display: none;}
 	.dsidx-primary-data .dsidx-address a span {	display: none;}
 	.dsidx-primary-data .dsidx-address a {	color: @primary; .h3;}
 }
+
+#dsidx {
+	.dsidx-listing {	display: table; width: 100%;
+		.dsidx-media, .dsidx-data {	display: table-cell; vertical-align: top;}
+		.dsidx-media {	width: 30%;}
+		.dsidx-data {	padding-left: 30px;}
+		.dsidx-primary-data {	display: table; width: 100%;
+			.dsidx-price, .dsidx-address {	display: inline-block;}
+			.dsidx-address {	max-width: 60%; padding: 10px 10px 10px 0;}
+			.dsidx-price {	float: right; background-color: @navy; color: white;.fg-demi; padding: 10px 20px;}
+		}
+
+		.dsidx-photo { position: relative; overflow: hidden;
+			img {	position: absolute; top: 50%; left: 50%; .transform(translate(-50%, -50%)); width: auto; height :auto; max-width: 100%;
+				&.landscape { max-width: none; max-height: 100%;}
+			}
+		}
+
+		.dsidx-secondary-data {	padding: 0; display: inline-block;
+			.dsidx-secondary-data-line, .dsidx-secondary-data-mls-number {	padding: 10px 30px 10px 0; border-bottom: 2px solid @navy;}
+			.dsidx-secondary-data-mls-number {	border-bottom: 0;}
+		}
+	}
+}
+
+
 
 
 

@@ -14,6 +14,8 @@ $( window ).load(function() {
 
 	if ($(window).width() > 990) {
 		$('.neighborhood-list').columnize({columns: 3})
+		squareMaker($('.dsidx-photo'));
+		mlsResultImages();
 	} else {
 		
 	}
@@ -176,3 +178,15 @@ function otherNeighborhoodToggle() {
 		$('.other-neighborhoods').slideToggle('slow');
 	})
 }
+
+function mlsResultImages() {
+	$('.dsidx-photo img').each(function() {
+      if ($(this).width() > $(this).height()) {
+        $(this).addClass('landscape');        
+      }
+    });
+}
+
+
+
+
