@@ -1,0 +1,543 @@
+////////////////////////////
+////// FONT VARIABLES ////// 
+////////////////////////////
+
+.body-copy {	 font-family: "athelas",serif;font-style: normal;font-weight: 400;}
+.athelas-bold { font-family: "athelas",serif;font-style: normal;font-weight: 700; letter-spacing: 0.5px;}
+.fg-demi {font-family: "franklin-gothic-urw-cond",sans-serif;font-style: normal;font-weight: 700; letter-spacing: 1px; text-transform: uppercase;}
+.fg-book {font-family: "franklin-gothic-urw-cond",sans-serif;font-style: normal;font-weight: 400; letter-spacing: 1px;}
+.effra-bold {	font-family: "effra",sans-serif;font-style: normal;font-weight: 700;}
+.effra-reg {	font-family: "effra",sans-serif;font-style: normal;font-weight: 400;}
+
+
+////////////////////////////
+////// COLOR VARIABLES /////
+////////////////////////////
+
+// @primary: #CCCCCC;
+@navy: #102540;
+@primary: #102540;
+@teal: #94d7d7;
+@beige: #dad4c8;
+@hover: @teal;
+@button: @primary;
+@light-gray: #ebebeb;
+@dark-gray: #e1e1e1;
+
+
+////////////////////////////
+////// WIDTH VARIABLES /////
+////////////////////////////
+
+// change values according to design; max-width of overall content should be around 1600px
+.skinny-cont {	width: 50%; margin: 0 auto; max-width: 960px;}
+.mid-cont {	width: 98%; margin: 0 auto; max-width: 1520px;}
+
+
+////////////////////////////
+/////// MEDIA QUERIES //////
+////////////////////////////
+// change or add values according to design
+@tablet: ~"only screen and (max-width: 990px)";
+@phone: ~"only screen and (max-width: 630px)";
+
+.desktop {	display: block;
+	@media @tablet {display: none}
+}
+.mobile {	display: none;
+	@media @tablet {	display: block;}
+}
+
+////////////////////////////
+///// BROWSER MIXINS ///////
+////////////////////////////
+.transition(@transition) {-webkit-transition:@transition;-moz-transition:@transition;-ms-transition:@transition;-o-transition:@transition; }
+.transform(@string){transform:@string;-webkit-transform:@string;-moz-transform:@string;-ms-transform:@string;-o-transform:@string;}
+.transform-origin(@string) {-webkit-transform-origin:@string; -moz-transform-origin: @string; -ms-transform-origin: @string; transform-origin: @string;}
+.browser-appearance(@string) {-webkit-appearance: @string;-moz-appearance:@string;appearance:@string;}
+
+
+////////////////////////////
+//// LINKS & INPUTS ////////
+////////////////////////////
+a {	.transition(all 0.2s ease); text-decoration: none; color: inherit; cursor: pointer;
+	&:hover {	color: @hover;}
+}
+// class for links that should not use universal link styling (link blocks, etc)
+.link-fix {	color: initial; text-decoration: none;}
+
+.button, button, input[type="submit"] {	background: @button; padding: 12px 26px; color: white; text-decoration: none; border: 0; .transition(all 0.2s ease); cursor: pointer; .browser-appearance(none); border-radius: 8px; .fg-demi; font-size: 14px; text-transform: uppercase;
+	&:hover {	color: white; background: @hover;}
+}
+label { .fg-demi; font-size: 14px; text-transform: uppercase;}
+
+input[type="text"], input[type="email"], input[type="password"],input[type="tel"], textarea, select {	.browser-appearance(none); border: 2px solid @primary; border-radius: 0; background: transparent; padding: 12px; resize: none; width: 100%; color: @primary; .body-copy; font-size: 18px;}
+::-webkit-input-placeholder {
+   color: @primary;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: @primary;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: @primary;  
+}
+
+:-ms-input-placeholder {  
+   color: @primary;  
+}
+
+
+////////////////////////////
+//////// HEADINGS //////////
+////////////////////////////
+h1, .h1 { margin: 0; .athelas-bold; font-size: 45px;}
+h2, .h2 { margin: 0; .athelas-bold; font-size: 28px;}
+h3, .h3 { margin: 0;.fg-demi; font-size: 18px; text-transform: uppercase;}
+h4, .h4 { margin: 0;}
+p { margin: 20px 0; letter-spacing: 0.5px; font-size: 18px; line-height: 24px;}
+
+
+////////////////////////////
+////////// NORMALIZE ///////////
+////////////////////////////
+body {	width: 100%; height: 100%; overflow-x: hidden; .body-copy; color: @primary;}
+body * {  box-sizing: border-box;}
+img {	max-width: 100%; height: auto;}
+table, .table {	border-collapse: separate;}
+*:focus { outline:none;}
+select:focus {	border: initial;}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {-webkit-appearance: none;margin: 0; }
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+input[type=number] {-moz-appearance: textfield;}
+ul {	margin: 0;}
+.table {	display: table;}
+.table-cell {	display: table-cell; vertical-align: middle;
+	&.half {	width: 50%;}
+}
+.inline-table {	display: inline-table;}
+.row {	display: table-row;}
+.left {	text-align: left;}
+.right {	text-align: right;}
+.center {	text-align: center;}
+.gray {	background-color: #f6f6f6;}
+.border {	border-top: 3px solid @navy;}
+.section {	padding: 50px 0;}
+.stuck {	position: fixed;}
+.above-footer {	padding-bottom: 75px;}
+.relative {	position: relative;}
+
+///////////////////
+///// HEADER //////
+///////////////////
+header, footer {	.fg-demi; font-size: 15px; text-transform: uppercase;
+	a {	color: @primary;}
+	.table {	.mid-cont;
+		&.main-nav {	margin: 25px auto;}
+	}
+	.table-cell {	width: 33%; vertical-align: middle;}
+	li {	display: inline-table; margin: 0 20px; position: relative; padding: 20px 0;
+		&.has-sub-menu:hover .sub-menu {	display: table;}
+	}
+	img {	max-width: 250px;}
+}
+.utility-nav { background-color: @navy; padding: 10px 0; font-size: 12px;
+	li {	margin: 0 10px; padding: 0;}
+	* {	color: white;}
+}
+.sub-menu { position: absolute; top: 100%; left: 75%; .transform(translate(-75%, 0)); display: none; .transition(0.2s all ease); z-index: 2;
+// 	TOWNS SUB-MENU
+	&.towns {	 width: 550px; border: 15px solid white;     filter: drop-shadow(rgba(0, 0, 0, 0.3) 0 2px 10px); -webkit-filter: drop-shadow(rgba(0, 0, 0, 0.3) 0 2px 10px); border-radius: 5px; background-color: white;
+		&:before {	border-bottom: 12px solid white; margin-bottom :15px;}
+		&:after {    border-bottom: 12px solid white;}
+		&:before, &:after {	    content: '';position: absolute;bottom: 100%;left:74%; .transform(translate(-74%, 0)); width: 0;height: 0;border-right: 16px solid transparent;border-left: 16px solid transparent;}
+		a {	display: inline-table; width: 33.33333333%; color: white; .effra-bold; font-size: 45px; text-transform: none; padding: 21px 0; outline: 7px solid white;}
+		small {	.effra-reg;  font-size: 12px; display: block;}
+	}
+}
+
+///////////////////
+///// FOOTER //////
+///////////////////
+footer {	background-color: @dark-gray; font-size: 14px;
+	img {	max-width: 91px; }
+	.main, .contact {	max-width: 900px; padding: 0 30px;}
+	.main {	border-bottom: 2px solid @primary;
+		.offset {	    margin: -30px auto 0;border-radius: 100%;padding: 35px 35px 20px 35px;background: @dark-gray;width: 171px;}
+	}
+	.contact {	padding: 30px; .body-copy; font-size: 14px; text-transform: none;}
+}
+
+///////////////////
+/// FRONT PAGE ////
+///////////////////
+
+.homepage-hero { background-position: 50% 50%; background-size: cover; background-repeat: no-repeat;padding: 150px 0;
+	h1 {	font-size: 45px; color: white; }
+	form {	background-color: @beige; padding: 25px; border-radius: 20px; max-width: 600px; margin: 50px auto 0; border-collapse: separate; width: 100%;}
+	input[type="text"] {	border: 0; width: 100%; color: @primary; .fg-book; font-size: 12px; background-color: white;}
+
+	a {	color: white; text-align: left;max-width: 600px; display: block; width: 100%; margin: 5px auto; padding-left: 20px; .fg-demi; font-size: 12px;}
+	.dsidx-resp-type-area, .dsidx-quick-resp-price-area, .dsidx-quick-resp-price-area {	display: none;}
+	.dsidx-resp-location-area, .dsidx-resp-area-submit {	float: none !important; display: table-cell !important;}
+	.dsidx-resp-location-area {	width: 75% !important;}
+}
+
+.homepage-content {
+	.table-cell {	padding: 0 60px;}
+}
+
+.learn-more-cta { background-color: @navy; border-radius: 100%; color: white; padding: 75px 50px; width: 325px; .athelas-bold; text-align: center; 
+	a  {.button; background-color: @teal; color: @primary;}
+	p {font-size: 26px; line-height: normal;}
+}
+
+.homepage-menu-wrapper {	background-position: 50% 50%; background-size: cover; background-repeat: no-repeat;padding: 100px 0;
+	.homepage-menu {	 max-width: 600px; width: 100%; border: 3px solid @light-gray; border-radius: 20px; margin: 0 auto; background: white; overflow: hidden;}
+	h3 {	background-color: @light-gray;; text-align: center;  padding: 20px; }
+	
+	li a { position: relative; border-bottom: 3px solid @light-gray; padding: 30px; .athelas-bold; font-size: 26px; .transition(0.2s all ease);	display: block;	letter-spacing: -0.5px;
+		&:hover {	background-color: @teal; color: @primary;}
+	}
+	li:last-child a {	border-bottom: 0;}
+	span {	position: absolute; right: 0; top: 50%; .transform(translate(0, -50%));}
+	
+}
+
+///////////////////////
+//// HERO TEMPLATE ////
+///////////////////////
+
+.hero { position: relative;
+	img {	width: 100%; display: block;}
+	h1	{	color: white; position: absolute; top: 50%; left:  50%; .transform(translate(-50%, -50%));  width: 90%; text-align: center;   text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1), -3px -3px 15px rgba(0, 0, 0, 0.1), 1px -1px 15px rgba(0, 0, 0, 0.1), -1px 1px 15px rgba(0, 0, 0, 0.1), 1px 1px 15px rgba(0, 0, 0, 0.1);}
+}
+.hero-template, .who-we-are {
+	a {	.button}
+}
+
+
+
+///////////////////////
+////// ABOUT PAGES ////
+///////////////////////
+
+.who-we-are { padding: 40px 70px;
+	.table-cell { 
+		&:first-child {	width: 60%; padding-right: 10%;}
+	}
+	img {	width: 100%;}
+}
+
+.mcdevitt-difference { 
+	img {	max-width: 75px;}
+	.table {	width: 100%; margin: 50px auto 0;}
+	.table-cell {	padding: 0 50px; vertical-align: top; width: 34%;}
+	h3 {	font-size: 18px; margin: 20px auto;}
+}
+
+.team-member {	display: inline-table; width: 30%; margin-right: 3%; position: relative; margin-bottom: 20px;
+	&:nth-child(3n) {	margin-right: 0;}
+	&:hover {	color: @primary;}
+	img {	display: block;}
+	.info {	background-color: rgba(228, 228, 228, 0.85); position: absolute; bottom: 0; left:0; width: 100%; text-align: left; padding: 20px 40px;}
+	h3 {	.athelas-bold; text-transform: uppercase; letter-spacing: 6px; font-size: 18px; margin-bottom: 5px;}
+	h4 {	.fg-book; font-size: 12px; text-transform: uppercase; letter-spacing: 2px;}
+}
+
+.single-team-member { position: relative;
+	.table {	margin-right: 240px;}
+	.table-cell:first-child {	padding: 0 30px; width: 35%;}
+	.table-cell:nth-child(2) {	padding-right: 30px;}
+	h2 {.athelas-bold; text-transform: uppercase; letter-spacing: 6px; font-size: 25px; margin-bottom: 5px;}
+	h3 {	.body-copy; font-style: italic; text-transform: none; font-size: 18px;}
+	.sticky {	position: absolute;  right: 0; top: 0; padding-top: 40px; z-index: 2;
+		&.stuck {	position: fixed; right: 1%;}
+	}
+	.cta {	background-color: @teal; padding: 15px 25px; width: 240px; text-align: center; 
+		h3 {	.h3; font-size: 14px; text-align: center; padding-bottom: 15px; border-bottom: 2px solid @navy;  margin: 0 auto; margin-bottom: 15px;}
+		p {	.fg-book; font-size: 14px; text-align: left; margin: 10px auto;}
+		i {	display: inline-block; font-size: 16px; width: 30px;}
+		a {	display: inline-block; margin-top: 8px;}
+		
+	}
+}
+ 
+///////////////////////
+///// BUYERS PAGES ////
+///////////////////////
+
+.buyers {
+	.table {	width: 90%; margin: 0 auto;}
+	img {	max-width: 72px;}
+	.table-cell {	border-right: 5px solid @dark-gray; width: 25%; padding: 20px 40px;
+		&:nth-child(4n) {	border-right: 0;}
+	}
+}
+.contact-cta {
+	p {	font-size: 28px; max-width: 500px; margin: 20px auto;line-height: normal;}
+	a {	.button;}
+}
+
+.buyers-agent {
+	.table-cell:first-child {	padding: 0px 50px; }
+	.table-cell:nth-child(2) {	padding-right: 50px;}
+}
+
+.deep-links {padding: 15px;
+	li {	padding: 15px 0; .athelas-bold; font-size: 22px;}
+	li:first-child {	.body-copy;font-style: italic; font-size: 20px;}
+}
+
+.bulletpoints { max-width: 700px; margin: 30px auto 0;
+	h4 {	.athelas-bold; font-size: 25px;}
+	div {	border-bottom: 4px solid @dark-gray; padding: 30px 50px;
+		&:last-child {	border-bottom: 0;}
+	}
+}
+
+
+///////////////////////
+///// CONTACT PAGE ////
+///////////////////////
+#map-canvas-main {	width: 100%; height: 340px;}
+.contact.section { .fg-book; font-size: 28px;
+	.table {	width: 80%; margin: 20px auto;}
+	.table-cell {	width: 50%; padding: 0 20px;}
+	.table-cell:first-child {	border-right: 2px solid @navy;}
+	h3 {	font-size: 16px; margin-bottom: 20px;}
+}
+
+.wpcf7-form {
+	.half {	width: 48%; display: inline-block; margin: 5px 0;}
+	.first {	margin-right: 3%;}
+	.last {	float: right;}
+	.wpcf7-not-valid-tip {.fg-demi; font-size: 14px; text-transform: uppercase;	}
+	div.wpcf7-validation-errors, .wpcf7-mail-sent-ng {	border: 0;.fg-demi; font-size: 14px; text-transform: uppercase; color: red; text-align: center;}
+}
+
+
+///////////////////////
+//////// BLOG /////////
+///////////////////////
+
+.category-list {	background-color: @navy; padding: 30px 0; width: 100%;
+	img {	max-width: 180px;}
+	* {	color: white; .fg-demi; font-size: 14px;
+		&:hover {	color: @hover;}
+	}
+	.table-cell:first-child {	border-right: 2px solid white; width: 310px; padding: 6px 64px;}
+	.table-cell {	text-align: center; padding: 0 30px;}
+}
+
+.blog-post {
+	&:last-child {	.above-footer}
+	&:nth-child(2n) {	background: @light-gray;}
+	h2  {	margin-bottom: 30px; .fg-book; font-size: 32px;}
+	p {	font-size: 16px;}
+}
+
+
+///////////////////////
+////// SELLERS ////////
+///////////////////////
+
+.seller-slider { position: relative; background-position: 50% 50%; background-repeat: no-repeat; background-size: cover; padding: 50px 0;
+	&:before {	content:'';width: 100%; height: 100%; background-color: rgba(16, 37, 64, 0.8); position: absolute; top: 0; left: 0;}
+	* {	color :white;}
+	.slick-dots {	text-align: center; z-index: 2; position: relative;
+		li {	display: inline-block; padding: 0 10px;
+			&.slick-active, &:hover {
+				 button {	opacity: 1;}
+			}
+		}
+		button {	 background: white; border-radius: 100%; padding: 0;width: 10px;height: 10px; color: transparent; opacity: 0.6; }
+	}
+}
+.slick-arrow {	position: absolute; top: 50%; .transform(translate(0, -50%)); font-size: 56px; cursor: pointer;
+	&:first-of-type {	left: 40px;}
+	&:last-of-type {	right: 40px;}
+}
+
+///////////////////////
+//// LOCAL GUIDE //////
+///////////////////////
+
+.badges { width: 58%;
+	.badge {	width: 33%; padding: 30px;
+		img {	max-width: 150px;}
+		h4 {	.effra-reg; font-size: 18px;margin-top: 15px;}
+		
+		&.bandw{	-webkit-filter: grayscale(100%);filter: grayscale(100%);}
+		&.color {	filter: none; -webkit-filter: none;}
+	}
+}
+
+.town { position: relative;
+	.hero {	display: block;}
+	.badge {	position: absolute; left: 75px; bottom: -75px; max-width: 200px;}
+	
+}
+
+.navy-ctas {
+	a {	background-color: @navy;    border: 30px solid white;width: 33%;padding: 100px 60px; .athelas-bold; font-size: 32px;}
+	* {	color: white;}
+}
+
+.filter-box {	border: 4px solid @dark-gray; width: 90%; margin: 0 auto;
+	h3 {	background-color: @dark-gray; padding: 15px;}
+}
+.neighborhood-list {	background-color: white; width: 100%; padding: 40px 0;
+	li {	.fg-book; font-size: 18px; padding: 5px 0;}
+}
+
+.listings-slider { width: 90%; margin: 20px auto 0;.fg-demi;
+	a {	width: 30%; padding: 10px; position: relative;}
+	span {	position: absolute; color: white; background-color: @navy; top: 30px; left: 10px; display: block; padding: 10px 40px;}
+	.slick-arrow {	
+		&:first-of-type {	left: -40px;}
+		&:last-of-type {	right: -40px;}
+	}
+	h4 {	color: white; padding: 10px; }
+
+}
+
+svg { border: 4px solid @beige; border-left: 0px;
+	.town {	cursor: pointer;}
+	.outline, text {	opacity: 0; .transition(0.2s all ease);}
+	#pinehurst {
+		.outline, text {	opacity: 1}
+	}
+	text {	.effra-bold; font-size: 9px; letter-spacing: 0.5px;}
+}
+
+.neighborhood-hero {	outline: 2px solid white; outline-offset: -10px; padding: 62px; position: relative;
+	* {color: white;}
+}
+
+.neighborhood-toggle {	cursor: pointer; .fg-demi; font-size: 15px; text-align: left;
+	&.open { background: rgba(255,255,255,0.3); position: absolute; top: 10px; left: 10px; padding: 20px 40px;  width: 225px; z-index: 1;}
+	&.close { padding: 30px 50px;}
+}
+
+.other-neighborhoods {	position: absolute; top: 0; left: 0; background: white; z-index: 2;width: 245px; display: none;    box-shadow:rgba(0, 0, 0, 0.3) 0 2px 10px; -webkit-box-shadow:rgba(0, 0, 0, 0.3) 0 2px 10px; -moz-box-shadow:rgba(0, 0, 0, 0.3) 0 2px 10px; text-align: left;
+	* {color: @primary;}
+	li {	.fg-book; font-size: 18px; padding: 5px 50px;}
+}
+
+
+.what-are-the-homes-like {
+	.badge.askew {	position: absolute; bottom: -50px; right: -50px; max-width: 120px; .transform(rotate(-15deg));}
+	.table-cell:last-child {	padding: 0 30px;}
+}
+
+#details-and-stats { 
+	table {	width: 90%; margin: 0 auto; border-collapse: collapse; table-layout: fixed;}
+	th {	.h3; font-size: 18px; border-bottom: 3px solid  @dark-gray; border-right: 3px solid @dark-gray;padding: 20px; width: 25%;
+		&:last-child {	border-right: 0;}
+	}
+	td {	vertical-align: top; padding: 10px 40px;border-right: 3px solid @dark-gray;
+		&:last-child {	border-right: 0;}
+	}
+	li {	padding: 10px 0; font-size: 18px;}
+}
+
+.why_this_neighborhood {
+	.table {	width: 90%; margin: 0 auto;}
+	.table-cell:first-child {	padding-right: 40px;}
+	.table-cell:last-child {	padding: 40px;}
+	ul {	padding-left: 20px;}
+	li {	list-style: disc; padding: 10px 0;
+		&:first-child {	padding-top: 25px;}
+	}
+}
+
+#map-canvas-neighborhood {	width: 75%; height: 340px;}
+
+.geography {
+	.table-cell:last-child {	padding: 0 50px;}
+}
+
+.ctas {
+	.table {	width: 90%; margin: 0 auto;}
+	.table-cell {	border-right: 5px solid @dark-gray; width: 33%; padding: 20px 40px;
+		&:nth-child(3n) {	border-right: 0;}
+		p {	margin-top: 10px; font-size: 30px;}
+		h3 {	font-size: 18px;}
+	}
+}
+
+
+///////////////////////
+////// MLS PAGES //////
+///////////////////////
+
+.mls {
+	.gray {	width: 85%; margin: 0 auto; text-align: center; padding: 40px 60px 60px;}
+	form  {
+		input[type="text"], select {	background: #ebebeb; border: 0; color: @primary;}
+		label {	margin-bottom: 5px;}
+		.dsidx-resp-area {	margin-bottom: 15px;}
+	}
+}
+
+.mls-search-form {
+	form {	text-align: left; padding: 40px 50px 15px; width: 100%; background: white; border: 4px solid @dark-gray;}
+	fieldset {	width: 100%;}
+	h2 {	margin-bottom: 35px;}
+	
+}
+
+.mls-results {
+	.table {	width: 100%;}
+	.gray {	padding :30px;}
+	.table-cell {	vertical-align: top;}
+	.sidebar {	width: 370px; padding-right: 30px;
+		.dsidx-widget-guided-search {padding: 20px 15px 15px; width: 100%; background: white; border: 4px solid @dark-gray;}
+		h3 {	background: @dark-gray; padding: 10px 0; font-size: 18px;}
+	}
+	.table-cell.results {	padding-left: 30px;}
+}
+
+// DSIDX OVERRIDES
+.dsidx-results .dsidx-paging-control, #dsidx .dsidx-sorting-control {	text-align: left; font-size: inherit; margin-bottom: 0; margin: 10px 0;}
+#dsidx .dsidx-sorting-control form {	width: 300px; display: inline-block;margin-left: 15px;}
+#dsidx .dsidx-sorting-control {	.h3; 
+	select {	.body-copy; font-size: 18px; padding: 12px; height: auto; line-height: normal;}
+}
+#dsidx-listings .dsidx-listing .dsidx-media {	float: none;padding: 0; margin: 0; background: transparent; text-align: left;}
+#dsidx-listings .dsidx-listing .dsidx-media .dsidx-photo {	border: 0; background: transparent; text-align: left;}
+#dsidx-listings .dsidx-listing .dsidx-media .dsidx-photo .dsidx-photo-count {	display: none !important;}
+#dsidx-listings .dsidx-listing .dsidx-data {	margin: 0; line-height: normal;}
+#dsidx-listings .dsidx-listing .dsidx-primary-data {	padding: 0; border-bottom: 0;}
+#dsidx-listings .dsidx-listing .dsidx-secondary-data {	padding: 0; color: @primary; font-size: 18px;}
+#dsidx-listings .dsidx-listing .dsidx-primary-data .dsidx-address {	float: none;}
+#dsidx-listings .dsidx-listing .dsidx-primary-data .dsidx-price, #dsidx-listings .dsidx-listing .dsidx-primary-data .dsidx-price-sold {	    color: @primary;font-size: 18px;font-weight: normal;padding: 0;background: transparent;margin-left: 0;float: none;position: relative!important;top: auto !important;left: auto !important;clear: none !important;}
+#dsidx-listings .dsidx-listing .dsidx-secondary-data div.dsidx-secondary-data-line {	margin-bottom: 0;}
+#dsidx-listings .dsidx-listing .dsidx-secondary-data span {	font-size: 18px;font-weight: normal; color: @primary;}
+#dsidx-listings .dsidx-listing .dsidx-listing-tag {	float: none; padding: 0; color: @primary; background-color: transparent; background: transparent;  margin: 0; font-weight: normal; font-size: 18px;line-height: normal; text-align: left;}
+#dsidx-listings .dsidx-listing .dsidx-listing-tag.dsidx-tag-reo, #dsidx-listings .dsidx-listing .dsidx-listing-tag.dsidx-tag-pre-foreclosure {	background: transparent;}
+#dsidx-listings .dsidx-listing .dsidx-listing-tag.dsidx-tag-pre-foreclosure {	text-align: left;}
+
+
+
+
+#dsidx #dsidx-map {background-color: white; outline: 4px solid @dark-gray; border: 15px solid white; }
+#dsidx-listings li.dsidx-listing-container { border: 4px solid @dark-gray; padding: 15px; margin-bottom: 30px; background-color: white; text-align: left;
+	.dsidx-secondary-data-mls-number {	display: none;}
+	.dsidx-primary-data .dsidx-address a span {	display: none;}
+	.dsidx-primary-data .dsidx-address a {	color: @primary; .h3;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
