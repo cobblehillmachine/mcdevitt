@@ -26,5 +26,5 @@
 	</div>
 </div>
 
-
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJmcrw6EmdKVALN1tj50wbIZK7wfDvd28"></script>
 <?php get_footer() ?>

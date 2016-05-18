@@ -15,6 +15,7 @@ $( window ).load(function() {
 	if ($(window).width() > 990) {
 		$('.neighborhood-list').columnize({columns: 3})
 		squareMaker($('.dsidx-photo'));
+		squareMaker($('.categories li'));
 		mlsResultImages();
 	} else {
 		
@@ -50,8 +51,13 @@ $(window).scroll(function() {
 	}
 });
 
-google.maps.event.addDomListener(window, 'load', mainMapInitialize);
-google.maps.event.addDomListener(window, 'load', neighborhoodMapInitialize);
+if ($('#map-canvas-main').length > 0) {
+	google.maps.event.addDomListener(window, 'load', mainMapInitialize);
+}
+if ($('#map-canvas-neighborhood').length > 0) {
+	google.maps.event.addDomListener(window, 'load', neighborhoodMapInitialize);
+}
+
 
 function squareMaker(selector) {
 	var width = selector.width();

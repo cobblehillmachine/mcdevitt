@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Template - MLS
+ * Template Name: Template - MLS Results
  * Description: Generic Sub Page Template
  *
  * @package WordPress
