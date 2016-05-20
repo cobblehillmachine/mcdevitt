@@ -53,7 +53,7 @@ function add_javascript() {
 
 }
 
-// add_action('wp_enqueue_scripts', 'add_javascript');
+add_action('wp_enqueue_scripts', 'add_javascript');
 
 /**
  *
@@ -128,6 +128,13 @@ register_sidebar( array (
 	'name' => __( 'MLS Sidebar'),
 	'id' => 'mls-sidebar',
 	'description' => __( 'MLS Sidebar'),
+	'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+	'after_widget' => '</li>'
+) );
+register_sidebar( array (
+	'name' => __( 'Featured Sidebar'),
+	'id' => 'featured-sidebar',
+	'description' => __( 'Featured Sidebar'),
 	'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 	'after_widget' => '</li>'
 ) );

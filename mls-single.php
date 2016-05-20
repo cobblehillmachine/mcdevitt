@@ -10,7 +10,7 @@
 get_header();the_post(); ?>
 <div class="section border mid-cont mls mls-results">
 	<div class="gray section">
-		<?php the_title() ?>
+		<h2><?php the_title() ?></h2>
 		<?php the_post_thumbnail() ?>
 		<?php the_content() ?>
 	</div>

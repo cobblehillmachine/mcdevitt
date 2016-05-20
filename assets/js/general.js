@@ -1,21 +1,21 @@
 var stickyElement;
-$( window ).load(function() {
+jQuery( window ).load(function() {
 	sellerSlider();
 	listingsSlider();
 	svgHover();
 	otherNeighborhoodToggle();
-	if ($('.sticky').length > 0) {
-		stickyElement = $('.sticky').offset().top;
+	if (jQuery('.sticky').length > 0) {
+		stickyElement = jQuery('.sticky').offset().top;
 	}
-	$('.deep-links a, a.smooth-scroll').on('click', function(e) {
+	jQuery('.deep-links a, a.smooth-scroll').on('click', function(e) {
 		e.preventDefault();
-		smoothScroll( $($.attr(this, 'href')), 0);
+		smoothScroll( jQuery(jQuery.attr(this, 'href')), 0);
 	})
 
-	if ($(window).width() > 990) {
-		$('.neighborhood-list').columnize({columns: 3})
-		squareMaker($('.dsidx-photo'));
-		squareMaker($('.categories li'));
+	if (jQuery(window).width() > 990) {
+		jQuery('.neighborhood-list').columnize({columns: 3})
+		squareMaker(jQuery('.dsidx-photo'));
+		squareMaker(jQuery('.categories li'));
 		mlsResultImages();
 	} else {
 		
@@ -23,38 +23,38 @@ $( window ).load(function() {
 
 })
 
-$( document).ready(function() {
+jQuery( document).ready(function() {
 
 })
 
-$( window ).resize(function() {
-	if ($(window).width() > 990) {
+jQuery( window ).resize(function() {
+	if (jQuery(window).width() > 990) {
 		
 	} else {
 		
 	}	
 })
 
-$(document).ajaxComplete( function() {
+jQuery(document).ajaxComplete( function() {
 	
 })
 
 
-$(window).scroll(function() {  
-	if ($('.sticky').length > 0) {
-	    if ($(window).scrollTop() > stickyElement) {
-	        $('.sticky').addClass('stuck');
+jQuery(window).scroll(function() {  
+	if (jQuery('.sticky').length > 0) {
+	    if (jQuery(window).scrollTop() > stickyElement) {
+	        jQuery('.sticky').addClass('stuck');
 	    }
 	    else {
-	        $('.sticky').removeClass('stuck');
+	        jQuery('.sticky').removeClass('stuck');
 	    }  
 	}
 });
 
-if ($('#map-canvas-main').length > 0) {
+if (jQuery('#map-canvas-main').length > 0) {
 	google.maps.event.addDomListener(window, 'load', mainMapInitialize);
 }
-if ($('#map-canvas-neighborhood').length > 0) {
+if (jQuery('#map-canvas-neighborhood').length > 0) {
 	google.maps.event.addDomListener(window, 'load', neighborhoodMapInitialize);
 }
 
@@ -62,25 +62,25 @@ if ($('#map-canvas-neighborhood').length > 0) {
 function squareMaker(selector) {
 	var width = selector.width();
 	selector.css('height', width);
-	if ($(window).width() > 1150) {
-		$('.contact.offset-cont .side-cont').css('height', width);
+	if (jQuery(window).width() > 1150) {
+		jQuery('.contact.offset-cont .side-cont').css('height', width);
 	}
 }
 
 function divEqualizer(divSelector) {
 	var maxHeight = 0;
 	divSelector.each(function(){
-   		if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+   		if (jQuery(this).height() > maxHeight) { maxHeight = jQuery(this).height(); }
 	});
 	divSelector.height(maxHeight);
 }
 
 function centerBlogImages() {
-	$('img.aligncenter').parent().css('text-align','center')
+	jQuery('img.aligncenter').parent().css('text-align','center')
 }
 
 function smoothScroll(element, padding) {
-	$('html, body').animate({
+	jQuery('html, body').animate({
         scrollTop: element.offset().top - padding
     }, 600);
 }
@@ -110,8 +110,8 @@ function mainMapInitialize() {
 }
 
 function neighborhoodMapInitialize() {
-	var latitude = $('#map-canvas-neighborhood').attr('data-lat');
-	var longitude = $('#map-canvas-neighborhood').attr('data-long');
+	var latitude = jQuery('#map-canvas-neighborhood').attr('data-lat');
+	var longitude = jQuery('#map-canvas-neighborhood').attr('data-long');
 	var myOptions = {
 	    zoom:14,
 	    scaleControl: false,
@@ -136,7 +136,7 @@ function neighborhoodMapInitialize() {
 }
 
 function sellerSlider() {
-	$('.seller-slider').slick({
+	jQuery('.seller-slider').slick({
 		nextArrow: '<i class="fa fa-angle-right" aria-hidden="true"></i>',
 		prevArrow: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
 		dots: true
@@ -144,7 +144,7 @@ function sellerSlider() {
 }
 
 function listingsSlider() {
-	$('.listings-slider').slick({
+	jQuery('.listings-slider').slick({
 		nextArrow: '<i class="fa fa-angle-right" aria-hidden="true"></i>',
 		prevArrow: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
 		infinite: true,
@@ -154,41 +154,41 @@ function listingsSlider() {
 }
 
 function svgHover() {
-	$('.badge').on("mouseenter", function() {
-		$(this).addClass('color');
-		$('.badge').addClass('bandw');
-		var townSlug = $(this).attr('id');
-		$('svg g#' + townSlug + ' .outline, svg g#' + townSlug + ' text').css('opacity', 1);
+	jQuery('.badge').on("mouseenter", function() {
+		jQuery(this).addClass('color');
+		jQuery('.badge').addClass('bandw');
+		var townSlug = jQuery(this).attr('id');
+		jQuery('svg g#' + townSlug + ' .outline, svg g#' + townSlug + ' text').css('opacity', 1);
 	})
-	$('.badge').on("mouseleave", function() {
-		$('.badge').removeClass('bandw');
-		$(this).removeClass('color');
-		$('svg g.town .outline, svg g.town text').css('opacity', 0);
+	jQuery('.badge').on("mouseleave", function() {
+		jQuery('.badge').removeClass('bandw');
+		jQuery(this).removeClass('color');
+		jQuery('svg g.town .outline, svg g.town text').css('opacity', 0);
 	})
-	$('.dot').on("mouseenter",function() {
-		$(this).siblings().css('opacity', 1);
-		var townSlug = $(this).parent().attr('id');
-		$('.badge').addClass('bandw');
-		$('.badge#' + townSlug).addClass('color');
+	jQuery('.dot').on("mouseenter",function() {
+		jQuery(this).siblings().css('opacity', 1);
+		var townSlug = jQuery(this).parent().attr('id');
+		jQuery('.badge').addClass('bandw');
+		jQuery('.badge#' + townSlug).addClass('color');
 		
 	})
-	$('.dot').on("mouseleave",function() {
-		$(this).siblings().css('opacity', 0);
-		$('.badge').removeClass('color');
-		$('.badge').removeClass('bandw');
+	jQuery('.dot').on("mouseleave",function() {
+		jQuery(this).siblings().css('opacity', 0);
+		jQuery('.badge').removeClass('color');
+		jQuery('.badge').removeClass('bandw');
 	})
 }
 
 function otherNeighborhoodToggle() {
-	$('.neighborhood-toggle').on('click', function() {
-		$('.other-neighborhoods').slideToggle('slow');
+	jQuery('.neighborhood-toggle').on('click', function() {
+		jQuery('.other-neighborhoods').slideToggle('slow');
 	})
 }
 
 function mlsResultImages() {
-	$('.dsidx-photo img').each(function() {
-      if ($(this).width() > $(this).height()) {
-        $(this).addClass('landscape');        
+	jQuery('.dsidx-photo img').each(function() {
+      if (jQuery(this).width() > jQuery(this).height()) {
+        jQuery(this).addClass('landscape');        
       }
     });
 }
