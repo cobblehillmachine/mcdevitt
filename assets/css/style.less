@@ -528,10 +528,11 @@ svg { border: 4px solid @beige; border-left: 0px;
 #dsidx-listings .dsidx-listing .dsidx-listing-tag.dsidx-tag-reo, #dsidx-listings .dsidx-listing .dsidx-listing-tag.dsidx-tag-pre-foreclosure {	background: transparent;}
 #dsidx-listings .dsidx-listing .dsidx-listing-tag.dsidx-tag-pre-foreclosure {	text-align: left;}
 #dsidx-listings .dsidx-listing {	border-bottom: 0; border-radius: 0;}
+.dsidx-details #dsidx-header table td {	padding: 0;}
+#dsidx .dsidx-secondary-row {	background-color: transparent;;}
+#dsidx table {	color: @primary;}
 
-
-
-#dsidx #dsidx-map {background-color: white; outline: 4px solid @dark-gray; border: 15px solid white; }
+#dsidx #dsidx-map {background-color: white; outline: 4px solid @dark-gray; border: 15px solid white; outline-offset: -4px;}
 #dsidx-listings li.dsidx-listing-container { border: 4px solid @dark-gray; padding: 15px; margin-bottom: 30px; background-color: white; text-align: left;
 	// .dsidx-secondary-data-mls-number {	display: none;}
 	.dsidx-primary-data .dsidx-address a span {	display: none;}
@@ -566,6 +567,24 @@ svg { border: 4px solid @beige; border-left: 0px;
 		}
 	}
 }
+
+#dsidx.dsidx-details {
+	h3 {	background-color: #e1e1e1; padding: 10px; border-bottom: 0;}
+}
+
+.dsidx-details #dsidx-primary-data, .dsidx-details #dsidx-description, .dsidx-details #dsidx-secondary-data, .dsidx-details #dsidx-schools, #dsidx.dsidx-details .dsidx-supplemental-data {	background: white; border: 4px solid #e1e1e1;padding: 30px; border-collapse: separate; text-align: left;
+	th {	.fg-demi;}
+	td {	text-align: left;}
+	b {	font-weight: normal;}
+}
+.dsidx-details #dsidx-primary-data {	border-bottom: 0; padding: 30px 25% 0 30px; text-align: left; position: relative;
+	
+	#dsidx-price { display: block; margin-bottom: 30px; position: absolute; right: 30px; top: 34px;
+		th {	display: none;}
+		td {	 background-color: @navy; color: white;.fg-demi; padding: 10px 20px; display: inline;}
+	}
+}
+.dsidx-details #dsidx-description {	border-top: 0; margin-top: 0;}
 
 
 
