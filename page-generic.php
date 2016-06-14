@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Template - Default page
+ * Template Name: Template - Generic(SEO)
  * Description: Generic Sub Page Template
  *
  * @package WordPress
@@ -8,7 +8,7 @@
  */
 
 get_header();the_post(); ?>
-<div class="page-generic mid-cont">
+<div class="page-generic mid-cont center">
 	<h2 class="title"><?php the_title() ?></h2>
 	<div class="content">
 		<?php the_content(); ?>
