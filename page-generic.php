@@ -8,9 +8,8 @@
  */
 
 get_header();the_post(); ?>
-<div class="page-generic mid-cont center">
-	<h2 class="title"><?php the_title() ?></h2>
-	<div class="content">
+<div class="page-generic mid-cont border above-footer">
+	<div class="content skinny-cont">
 		<?php the_content(); ?>
 	</div>
 </div>

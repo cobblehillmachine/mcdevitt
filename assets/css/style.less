@@ -30,8 +30,10 @@
 ////////////////////////////
 
 // change values according to design; max-width of overall content should be around 1600px
-.skinny-cont {	width: 50%; margin: 0 auto; max-width: 960px;}
-.mid-cont {	width: 98%; margin: 0 auto; max-width: 1520px;}
+.skinny-cont {	max-width: 630px;  margin: 0 auto; }
+.mid-cont {	width: 98%; margin: 0 auto; max-width: 1520px;
+	@media @phone {	width: 90%;}
+}
 
 
 ////////////////////////////
@@ -587,7 +589,11 @@ svg { border: 4px solid @beige; border-left: 0px;
 .dsidx-details #dsidx-description {	border-top: 0; margin-top: 0;}
 
 
-
+// SEO PAGE
+.page-generic {
+	h2 {	margin: 50px 0; text-align: center;}
+	a {	text-decoration: underline;}
+}
 
 
 
