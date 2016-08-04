@@ -14,13 +14,13 @@ $town_id = get_the_ID(); ?>
 </div>
 
 <div class="section mid-cont table center navy-ctas">
-	<a class="table-cell smooth-scroll" href="#explore-the-neighborhoods">Explore the Neighborhoods</a>
-	<a class="table-cell" href="#">View the Video</a>
-	<a class="table-cell" href="/mls-listings">Search All Homes For Sale</a>
+	<a class="table-cell smooth-scroll" href="#explore-the-neighborhoods">Explore <?php the_title() ?> Neighborhoods</a>
+	<a class="table-cell" href="#">View the <?php the_title() ?> Video</a>
+	<a class="table-cell" href="<?php the_field('mls_link') ?>">Search All <?php the_title() ?> Homes For Sale</a>
 
 </div>
 
-<div class="section gray center mid-cont" id="explore-the-neighborhoods">
+<div class="section gray center mid-cont above-footer" id="explore-the-neighborhoods">
 	<div class="filter-box">
 		<h3>Explore the Neighborhoods</h3>
 		<div class="neighborhood-list">
@@ -34,6 +34,7 @@ $town_id = get_the_ID(); ?>
 	</div>
 </div>
 
+<!--
 <div class="section above-footer center mid-cont">
 	<h3>Featured Listings</h3>
 	<div class="listings-slider">
@@ -47,6 +48,7 @@ $town_id = get_the_ID(); ?>
 		<?php endwhile; ?>
 	</div>
 </div>
+-->
 
 
 <?php get_footer() ?>

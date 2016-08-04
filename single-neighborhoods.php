@@ -4,7 +4,9 @@ $town = get_field('town');
 $post = $town;
 setup_postdata( $post );
 	$color = get_field('color');
+	$town_id = get_the_ID();
 	$town_name = get_the_title();
+	$town_url = get_the_permalink();
 	$abbreviation = get_field('abbreviation');
 	$badge_img_src = get_field('badge');
 wp_reset_postdata();
@@ -39,9 +41,9 @@ the_post();?>
 
 <div class="section mid-cont center">
 	<div class="table mid-cont navy-ctas">
-		<a class="table-cell smooth-scroll" href="#details-and-stats">Neighborhood Details & Stats</a>
-		<a class="table-cell" href="#">View the Video</a>
-		<a class="table-cell" href="/mls-listings">Search All Homes For Sale</a>
+		<a class="table-cell smooth-scroll" href="#details-and-stats"><?php the_title() ?> Details & Stats</a>
+		<a class="table-cell" href="#">View the <?php the_title() ?> Video</a>
+		<a class="table-cell" href="/mls-listings">Search All <?php the_title() ?> Homes For Sale</a>
 	</div>
 	<div class="skinny-cont center section">
 		<?php the_content() ?>
@@ -118,31 +120,18 @@ the_post();?>
 	</div>
 </div>
 
-<div class="section gray center mid-cont">
-	<h3>Featured Listings</h3>
-	<div class="listings-slider">
-		<?php $listings = new WP_query(array('post_type' => 'Featured Listings', 'meta_key' => 'neighborhood', 'meta_value' => $neighborhood_id, 'orderby' => 'menu_order', 'order' => 'ASC', 'posts_per_page' => -1)) ?>
-		<?php while ( $listings->have_posts() ) : $listings->the_post();?>
-			<a href="<?php the_permalink() ?>">
-				<span><?php the_field('listing_price'); ?></span>
-				<?php the_post_thumbnail() ?>
-				<h4 style="background-color: <?php echo $color ?>;"><?php the_title() ?></h4>
-			</a>
-		<?php endwhile; ?>
-	</div>
-</div>
 
 <div class="section center mid-cont ctas above-footer">
 	<div class="table">
-		<a class="table-cell">
+		<a class="table-cell" href="<?php echo $town_url ?>">
 			<h3>Learn About</h3>
 			<p><?php echo $town_name ?></p>
 		</a>
-		<a class="table-cell">
+		<a class="table-cell" href="<?php echo $suggested_link ?>">
 			<h3>You Might Also Like</h3>
 			<p><?php echo $suggested_name ?></p>
 		</a>
-		<a class="table-cell">
+		<a class="table-cell" href="/listings/mls-listings/">
 			<h3>take me to</h3>
 			<p>MLS Search</p>
 		</a>
@@ -152,5 +141,5 @@ the_post();?>
 </div>
 
 
-
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJmcrw6EmdKVALN1tj50wbIZK7wfDvd28"></script>
 <?php get_footer() ?>

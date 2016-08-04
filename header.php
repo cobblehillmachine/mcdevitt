@@ -41,11 +41,14 @@
 				<div class="table-cell left">serving the pinehurst and southern pines area since 2002</div>
 				<div class="table-cell right">
 					<ul>
-						<li><a href="#" class="search"><i class="fa fa-search"></i></a></li>
+						<li class="search-trigger">
+							<a href="#" class="search"><i class="fa fa-search"></i></a>
+						</li>
 						<li><a href="/contact">Contact</a></li>
 					</ul>
 				</div>
 			</div>
+			<?php dynamic_sidebar('universal-search'); ?>
 		</div>
 		<div class="main-nav table">
 			<div class="table-cell center">

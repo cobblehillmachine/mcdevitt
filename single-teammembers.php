@@ -1,6 +1,6 @@
 <?php get_header(); the_post() ?>
 
-<div class="section border mid-cont single-team-member">
+<div class="section border mid-cont single-team-member above-footer">
 	<div class="table">
 		<div class="table-cell"><?php the_post_thumbnail() ?></div>
 		<div class="table-cell">
@@ -19,6 +19,7 @@
 	</div>
 </div>
 
+<!--
 <div class="section gray mid-cont single-team-member">
 	<div class="table">
 		<div class="table-cell"><img src="<?php the_field('photo_of_agent_in_local_business') ?>"></div>
@@ -29,6 +30,7 @@
 		</div>
 	</div>
 </div>
+-->
 
 
 

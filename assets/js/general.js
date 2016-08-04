@@ -4,6 +4,7 @@ jQuery( window ).load(function() {
 	listingsSlider();
 	svgHover();
 	otherNeighborhoodToggle();
+	searchToggle();
 	if (jQuery('.sticky').length > 0) {
 		stickyElement = jQuery('.sticky').offset().top;
 	}
@@ -15,7 +16,7 @@ jQuery( window ).load(function() {
 	if (jQuery(window).width() > 990) {
 		jQuery('.neighborhood-list').columnize({columns: 3})
 		squareMaker(jQuery('.dsidx-photo'));
-		squareMaker(jQuery('.categories li'));
+		squareMaker(jQuery('.categories a'));
 		mlsResultImages();
 	} else {
 		
@@ -193,6 +194,13 @@ function mlsResultImages() {
     });
 }
 
+
+function searchToggle() {
+	jQuery('.search-trigger').on('click',function(e) {
+		e.preventDefault();
+		jQuery('#dsidx-quicksearch-4').toggle();
+    });
+}
 
 
 

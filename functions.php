@@ -117,6 +117,14 @@ register_sidebar( array (
 ) );
 
 register_sidebar( array (
+	'name' => __( 'Universal Search'),
+	'id' => 'universal-search',
+	'description' => __( 'Universal Search'),
+	'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+	'after_widget' => '</li>'
+) );
+
+register_sidebar( array (
 	'name' => __( 'Advanced IDX Search'),
 	'id' => 'advanced-idx-search',
 	'description' => __( 'Advanced IDX Search'),
@@ -142,21 +150,32 @@ register_sidebar( array (
 
 // custom post type
 
-//create state taxonomy
-add_action( 'init', 'create_offer_tax' );
-function create_offer_tax() {
-	register_taxonomy(
-		'featuredlistings',
-		array('featuredlistings'),
-		array(
-			'label' => __( 'Listing Category' ),
-			'rewrite' => array( 'slug' => 'listing-category' ),
-			'hierarchical' => true,
-			'show_in_quick_edit' => true,
-			'show_admin_column' => true
-		)
+/*
+function my_page_columns($columns) {
+	$columns = array(
+		'cb'	 	=> '<input type="checkbox" />',
+		'title' 	=> 'Title',
+		'town' 	=> 'Town',
+		'date'		=>	'Date',
 	);
+	return $columns;
 }
+
+function my_custom_columns($column) {
+	global $post;
+	if($column == 'featured') {
+		$town = get_field('town');
+		if($town) {
+			echo $town->name;
+		} else {
+			echo '';
+		}
+	}
+}
+
+add_action("manage_neighborhoods_custom_column", "my_custom_columns");
+add_filter("manage_edit-neighborhood_columns", "my_page_columns");
+*/
 
 add_action( 'init', 'create_post_type' );
 function create_post_type() {
@@ -172,19 +191,6 @@ function create_post_type() {
 		'supports' => array( 'title', 'editor', 'thumbnail' )
 	);
   	register_post_type( 'Team Members', $args1);
-  	
-  	$args2 = array(
-		'labels' => array(
-			'name' => __( 'Featured Listings' ),
-			'singular_name' => __( 'Featured Listing' )
-		),
-		'public' => true,
-		'menu_icon' => 'dashicons-admin-multisite',
-		'rewrite' => array('slug' => 'featured-listings'),
-		'supports' => array( 'title', 'editor', 'thumbnail' )
-	);
-  	register_post_type( 'Featured Listings', $args2);
-  	register_taxonomy_for_object_type('Listing Category', 'featuredlistings');
 
   	$args3 = array(
 		'labels' => array(
