@@ -1,7 +1,10 @@
 <?php get_header();
 $neighborhood_id = get_the_ID();
 $town = get_field('town');
+$neighb_lat = get_field('latitude');
+$neighb_long = get_field('longitude');
 $post = $town;
+
 setup_postdata( $post );
 	$color = get_field('color');
 	$town_id = get_the_ID();
@@ -9,6 +12,9 @@ setup_postdata( $post );
 	$town_url = get_the_permalink();
 	$abbreviation = get_field('abbreviation');
 	$badge_img_src = get_field('badge');
+	$town_lat = get_field('latitude');
+	$town_long = get_field('longitude');
+	$town_geography = get_field('geography');
 wp_reset_postdata();
 
 $post = get_field('you_might_also_like');
@@ -16,6 +22,13 @@ setup_postdata( $post );
 	$suggested_name = get_the_title();
 	$suggested_link = get_the_permalink();
 wp_reset_postdata();
+
+$neighb_geography = get_field('geography');
+if ($neighb_geography) {
+	$geography = $neighb_geography;
+} else if ($town_geography) {
+	$geography = $town_geography;
+} 
 
 the_post();?>
 
@@ -65,41 +78,7 @@ the_post();?>
 </div>
 
 
-<div class="section">
-	<div class="gray section mid-cont center" id="details-and-stats">
-		<table>
-			<thead>
-				<tr>
-					<th>AVG. SALE PRICE</th>
-					<th>AVG. SALE RANGE</th>
-					<th>BEST KNOWN FOR</th>
-					<th>TYPICAL HOME SIZE</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<li><?php the_field('average_sale_price') ?></li>
-					</td>
-					<td>
-						<li><?php the_field('average_sale_range') ?></li>
-					</td>
-					<td>
-						<?php while( have_rows('best_known_for') ): the_row(); ?>
-							<li><?php the_sub_field('point') ?></li>
-						<?php endwhile; ?>
-					</td>
-					<td>
-						<li><?php the_field('typical_bedrooms') ?></li>
-						<li><?php the_field('typical_square_footage') ?></li>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
-
-<div class=" mid-cont why_this_neighborhood">
+<div class=" mid-cont why_this_neighborhood section">
 	<div class="table">
 		<div class="table-cell half">
 			<h3>Why <?php the_title() ?>?</h3>
@@ -112,12 +91,40 @@ the_post();?>
 	</div>
 </div>
 
-<div class="section mid-cont geography">
-	<div id="map-canvas-neighborhood" class="table-cell" data-long="<?php the_field('longitude') ?>" data-lat="<?php the_field('latitude') ?>"></div>
-	<div class="table-cell">
-		<h3>Geography</h3>
-		<?php the_field('geography_info') ?>
+<div class="section mid-cont geography table">
+	<div class="table-cell half center">
+		<h3>Stats Overview</h3>
+		<div class="table stats-overview left">
+			<?php while( have_rows('stats') ): the_row(); 
+			$key = get_sub_field('key');
+			$value = get_sub_field('value'); ?>
+			<div class="row">
+				<div class="table-cell half left">
+					<h3><?php echo $key ?></h3>
+				</div>
+				<div class="table-cell half right">
+					<span><?php echo $value ?></span>
+				</div>
+			</div>
+			<?php endwhile; ?>
+			
+		</div>
+		
 	</div>
+	<div class="table-cell half center">
+		<h3>Geography</h3>
+		<?php if ($neighb_lat) { ?>
+			<div id="map-canvas-neighborhood" data-long="<?php echo $neighb_long ?>" data-lat="<?php echo $neighb_lat ?>"></div>
+		<?php } else { ?>
+			<div id="map-canvas-neighborhood" data-long="<?php echo $town_long ?>" data-lat="<?php echo $town_lat ?>"></div>
+		<?php } ?>
+		
+		<?php if ($geography) { ?>
+			<p class="left"><?php echo $geography ?></p>
+		<?php } ?>
+		
+	</div>
+	
 </div>
 
 

@@ -12,9 +12,13 @@ jQuery( window ).load(function() {
 		e.preventDefault();
 		smoothScroll( jQuery(jQuery.attr(this, 'href')), 0);
 	})
+	
+	if (jQuery(window).width() > 630) {
+		jQuery('.neighborhood-list').columnize({columns: 3})
+	}
 
 	if (jQuery(window).width() > 990) {
-		jQuery('.neighborhood-list').columnize({columns: 3})
+		
 		squareMaker(jQuery('.dsidx-photo'));
 		squareMaker(jQuery('.categories a'));
 		mlsResultImages();

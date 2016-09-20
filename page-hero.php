@@ -52,7 +52,7 @@
 	<div class="gray section mid-cont center">
 		<div class="skinny-cont"><?php the_field('content') ?></div>
 	</div>
-	<div class="mid-cont center section">
+	<div class="mid-cont center section badges-wrapper">
 		<h3><?php the_field('content_title') ?></h3>
 		<div class="table section">
 			<div class="table-cell"><?php get_template_part('content', 'town-map') ?></div>
