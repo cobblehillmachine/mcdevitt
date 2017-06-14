@@ -2,8 +2,8 @@
 
 <div class="mid-cont homepage-hero search center" style="background-image:url(<?php the_field('background_hero_image') ?>)">
 	<h1><?php the_field('search_headline'); ?></h1>
-	<?php dynamic_sidebar('homepage-hero'); ?>
-	<a href="/listings/mls-listings/">Advanced Search</a>
+	<?php //dynamic_sidebar('homepage-hero'); ?>
+	<a target="_blank" href="https://idxpro.cisdata.net/AR213674/Search/advanced/">Advanced Search</a>
 </div>
 <div class="mid-cont table mobile-mid-cont section homepage-content">
 	<div class="table-cell"><?php the_field('content'); ?></div>
