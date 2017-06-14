@@ -5,7 +5,7 @@
 	<?php dynamic_sidebar('homepage-hero'); ?>
 	<a href="/listings/mls-listings/">Advanced Search</a>
 </div>
-<div class="mid-cont table section homepage-content">
+<div class="mid-cont table mobile-mid-cont section homepage-content">
 	<div class="table-cell"><?php the_field('content'); ?></div>
 	<div class="table-cell"><div class="learn-more-cta"><?php the_field('learn_more_cta'); ?></div></div>
 </div>

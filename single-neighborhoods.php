@@ -3,6 +3,7 @@ $neighborhood_id = get_the_ID();
 $town = get_field('town');
 $neighb_lat = get_field('latitude');
 $neighb_long = get_field('longitude');
+$video_iframe = get_field('video_iframe');
 $post = $town;
 
 setup_postdata( $post );
@@ -15,6 +16,7 @@ setup_postdata( $post );
 	$town_lat = get_field('latitude');
 	$town_long = get_field('longitude');
 	$town_geography = get_field('geography');
+	$town_video_iframe = get_field('video_iframe');
 wp_reset_postdata();
 
 $post = get_field('you_might_also_like');
@@ -37,12 +39,14 @@ the_post();?>
 		<div class="neighborhood-toggle close">
 			<span>close <?php echo $abbreviation ?> neighborhoods</span>
 		</div>
+		<ul>
 		<?php $neighborhoods = new WP_query(array('post_type' => 'Neighborhoods', 'meta_key' => 'town', 'meta_value' => $town_id, 'orderby' => 'name', 'order' => 'ASC', 'posts_per_page' => -1)) ?>
 			<?php while ( $neighborhoods->have_posts() ) : $neighborhoods->the_post();?>
 				<li>
 					<a href="<?php the_permalink() ?>"><?php the_title() ?></a>
 				</li>
 			<?php endwhile; wp_reset_query(); ?>
+		</ul>
 	</div>
 	<div class="open neighborhood-toggle">
 		<span>show all <?php echo $abbreviation ?> neighborhoods</span>
@@ -52,65 +56,87 @@ the_post();?>
 </div>
 
 
-<div class="section mid-cont center">
+<div class="section mid-cont center main-neighb-content">
 	<div class="table mid-cont navy-ctas">
 		<a class="table-cell smooth-scroll" href="#details-and-stats"><?php the_title() ?> Details & Stats</a>
-		<a class="table-cell" href="#">View the <?php the_title() ?> Video</a>
-		<a class="table-cell" href="/mls-listings">Search All <?php the_title() ?> Homes For Sale</a>
+		<?php if ($video_iframe) { ?>
+			<a class="table-cell" data-lity href='<?php echo $video_iframe ?>'>View the <?php the_title() ?> Video</a>
+		<?php } else if ($town_video_iframe) { ?>
+			<a class="table-cell" data-lity href='<?php echo $town_video_iframe ?>'>View the <?php the_title() ?> Video</a>
+		<?php } ?>
+		<a class="table-cell" href="<?php the_field('mls_link') ?>">Search All <?php the_title() ?> Homes For Sale</a>
 	</div>
-	<div class="skinny-cont center section">
-		<?php the_content() ?>
-		<p><a class="button" href="#">View Homes for Sale </a></p>
-	</div>
+	<?php $content = get_the_content();
+	if ($content) { ?>
+		<div class="skinny-cont center section force-center">
+			<?php the_content() ?>
+
+			<p><a class="button inline-block" href="<?php the_field('mls_link') ?>">View Homes for Sale </a></p>
+		</div>
+	<?php } ?>
 </div>
 
 
 
 <div class="gray section mid-cont table what-are-the-homes-like">
-	<div class="table-cell half relative">
-		<?php the_post_thumbnail() ?>
-		<img class="badge askew" src="<?php echo $badge_img_src ?>">
+	<?php if (has_post_thumbnail() ) { ?>
+		<div class="table-cell half relative background-image" style="background-image:url(<?php the_post_thumbnail_url() ?>)">
+			<img class="badge askew" src="<?php echo $badge_img_src ?>">
+		</div>
+		<div class="table-cell half">
+			<h3>What are the homes like?</h3>
+			<?php the_field('what_are_the_homes_like') ?>
+		</div>
+
+	<?php } else { ?>
+		<div class="center skinny-cont">
+			<h3>What are the homes like?</h3>
+			<?php the_field('what_are_the_homes_like') ?>
+		</div>
+
+	<?php } ?>
 	</div>
-	<div class="table-cell half">
-		<h3>What are the homes like?</h3>
-		<?php the_field('what_are_the_homes_like') ?>
-	</div>
-</div>
 
 
 <div class=" mid-cont why_this_neighborhood section">
 	<div class="table">
-		<div class="table-cell half">
-			<h3>Why <?php the_title() ?>?</h3>
-			<?php the_field('why_this_neighborhood') ?>
-		</div>
-		<div class="table-cell gray half">
-			<h3><?php the_title() ?> might be your neighborhood if:</h3>
-			<?php the_field('might_be_your_neighborhood_if') ?>
-		</div>
+		<?php if (get_field('why_this_neighborhood')) { ?>
+			<div class="table-cell half">
+				<h3>Why <?php the_title() ?>?</h3>
+				<?php the_field('why_this_neighborhood') ?>
+			</div>
+		<?php } ?>
+		<?php if (get_field('might_be_your_neighborhood_if')) { ?>
+			<div class="table-cell gray half">
+				<h3><?php the_title() ?> might be your neighborhood if:</h3>
+				<?php the_field('might_be_your_neighborhood_if') ?>
+			</div>
+		<?php } ?>
 	</div>
 </div>
 
-<div class="section mid-cont geography table">
-	<div class="table-cell half center">
-		<h3>Stats Overview</h3>
-		<div class="table stats-overview left">
-			<?php while( have_rows('stats') ): the_row(); 
-			$key = get_sub_field('key');
-			$value = get_sub_field('value'); ?>
-			<div class="row">
-				<div class="table-cell half left">
-					<h3><?php echo $key ?></h3>
+<div class="section mid-cont geography table nobottom" id="details-and-stats">
+	<?php if( have_rows('stats') ) {  ?>
+		<div class="table-cell half center">
+			<h3>Stats Overview</h3>
+			<div class="table stats-overview left">
+				<?php while( have_rows('stats') ): the_row(); 
+				$key = get_sub_field('key');
+				$value = get_sub_field('value'); ?>
+				<div class="row">
+					<div class="table-cell half left">
+						<h3><?php echo $key ?></h3>
+					</div>
+					<div class="table-cell half right">
+						<span><?php echo $value ?></span>
+					</div>
 				</div>
-				<div class="table-cell half right">
-					<span><?php echo $value ?></span>
-				</div>
+				<?php endwhile; ?>
+				
 			</div>
-			<?php endwhile; ?>
 			
 		</div>
-		
-	</div>
+	<?php } ?>
 	<div class="table-cell half center">
 		<h3>Geography</h3>
 		<?php if ($neighb_lat) { ?>

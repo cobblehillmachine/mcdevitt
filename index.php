@@ -1,20 +1,14 @@
-<?php
-/**
- * @package WordPress
- * @subpackage themename
- */
-$blog_id = get_option('page_for_posts'); get_header(); ?>
+ <?php get_header() ?>
+ 
+<?php get_header('blog') ?>
 
-<div class="primary" role="structure">
-  <section class="page posts-page">
-  	<header class="page-header">
-    	<h1 class="page-title" role="heading"><?php get_the_title( $blog_id );?></h1>
-    </header>
-    <div class="page-content">
-      <?php $post = get_post( $blog_id ); $post->post_content; ?>
-      <?php get_template_part( 'loop', 'index' ); ?>
-    </div>
-  </section>
+<div class="blog mid-cont">
+	<?php while ( have_posts() ) : the_post();?>
+		<?php get_template_part('content', 'post-excerpt') ?>              
+	<?php endwhile; ?>  
+	<?php wp_pagenavi(); ?>   
 </div>
-
-<?php get_footer(); ?>
+ 
+ 
+ 
+ <?php get_footer() ?>

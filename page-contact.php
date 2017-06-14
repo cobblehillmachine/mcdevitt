@@ -6,13 +6,13 @@
 <div class="section mid-cont contact">
 	<div class="table">
 		<div class="table-cell center">
-			<h3>Call Us</h3>
+			<h2>Call Us</h2>
 			<?php the_field('phone_number') ?>
 			<br>
-			<a href="mailto:<?php the_field('email_address') ?>"><?php the_field('email_address') ?></a>
+			<a href="mailto:<?php the_field('email_address') ?>">Email Us</a>
 		</div>
 		<div class="table-cell center">
-			<h3>Visit Us</h3>
+			<h2>Visit Us</h2>
 			<a href="<?php the_field('address_link') ?>" target=_blank>
 				<?php the_field('address') ?>
 			</a>

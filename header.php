@@ -19,7 +19,16 @@
 <?php wp_head(); ?>
 
 <!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-695923-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 <!-- END GOOGLE ANALYTICS -->
 
 <!-- TYPEKIT -->
@@ -49,27 +58,27 @@
 						</ul>
 					</div>
 				</div>
-				<?php dynamic_sidebar('universal-search'); ?>
+				<?php echo get_search_form() ?>
 			</div>
 			<div class="main-nav table">
 				<div class="table-cell center">
 					<ul>
 						<li><a href="/who-we-are">About</a></li>
 						<li class="has-sub-menu">
-							<a href="/listings">Listings</a>
+							<a href="/listings">Search MLS</a>
 							<ul class="sub-menu"></ul>
 						</li>
 						<li><a href="/buyers">Buyers</a></li>
 					</ul>
 				</div>
-				<div class="table-cell center"><a href="/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/header-logo.jpg"></a></div>
+				<div class="table-cell center"><a href="/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo3-navy.png"></a></div>
 				<div class="table-cell center">
 					<ul>
 						<li><a href="/sellers">Sellers</a></li>
 						<li class="has-sub-menu">
 							<a href="/local-guide">Local Guide</a>
 							<ul class="sub-menu towns">
-								<?php $towns = new WP_query(array('post_type' => 'towns', 'orderby' => 'menu_order', 'order' => 'ASC')); ?>
+								<?php $towns = new WP_query(array('post_type' => 'towns', 'orderby' => 'menu_order', 'order' => 'ASC', 'posts_per_page' => 6)); ?>
 								<?php while ( $towns->have_posts() ) : $towns->the_post();?>
 									<a href="<?php the_permalink() ?>" style="background-color: <?php the_field('color') ?>">
 										<?php the_field('abbreviation') ?>
@@ -86,7 +95,32 @@
 		<div class="mobile">
 			<div class="table">
 				<div class="table-cell left"><a href="/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/header-logo-white.png"></a></div>
-				<div class="table-cell right"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/hamburger-white.png"></a></div>
+				<div class="table-cell right">
+					<a href="#" class="nav-toggle">
+						<img class="hamburger" src="<?php echo get_template_directory_uri(); ?>/assets/images/hamburger-white.png">
+						<img class="close" src="<?php echo get_template_directory_uri(); ?>/assets/images/close-white.png">
+
+					</a>
+				</div>
+			</div>
+			<div class="mobile-nav">
+				<li><a href="/who-we-are">About</a></li>
+				<li><a href="/listings">Listings</a></li>
+				<li><a href="/buyers">Buyers</a></li>
+				<li><a href="/sellers">Sellers</a></li>
+				<li class="has-sub-menu">
+					<a href="/local-guide">Local Guide</a>
+					<ul class="mobile-sub-menu towns">
+						<?php $towns = new WP_query(array('post_type' => 'towns', 'orderby' => 'menu_order', 'order' => 'ASC', 'posts_per_page' => 6)); ?>
+						<?php while ( $towns->have_posts() ) : $towns->the_post();?>
+							<a href="<?php the_permalink() ?>" style="color: <?php the_field('color') ?>">
+
+								<li><?php the_title() ?></li>
+							</a>
+						<?php endwhile; wp_reset_query(); ?>
+					</ul>
+				</li>
+				<li><a href="/blog">Blog</a></li>
 			</div>
 		</div>
 	</header>

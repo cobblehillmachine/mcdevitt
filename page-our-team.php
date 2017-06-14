@@ -1,10 +1,10 @@
 <?php get_header(); the_post(); ?>
 
 
-<div class="center mid-cont section border">
+<div class="center mid-cont section border mobile-mid-cont">
 	<?php the_content(); ?>
 
-<div class="center section table mid-cont">
+<div class="center section table mid-cont ">
 	<?php $team = new WP_query(array('post_type' => 'Team Members', 'posts_per_page' => -1, 'orderby' => 'menu_order', 'order' => 'ASC')) ?>
 	<?php while ( $team->have_posts() ) : $team->the_post();?>
 		<a href="<?php the_permalink() ?>" class="team-member">

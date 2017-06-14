@@ -86,34 +86,46 @@
 	</g>
 </g>
 <g class="" id="pinehurst">
-	<circle class="st9" cx="134.5" cy="170" r="4.8"/>
-	<circle class="st10" cx="134.5" cy="170" r="7.3"/>
-	<text transform="matrix(1 0 0 1 114.8792 186.7113)" class="st9 st12 st13">Pinehurst</text>
+	<a href="/towns/pinehurst">
+		<circle class="st9" cx="134.5" cy="170" r="4.8"/>
+		<circle class="st10" cx="134.5" cy="170" r="7.3"/>
+		<text transform="matrix(1 0 0 1 114.8792 186.7113)" class="st9 st12 st13">Pinehurst</text>
+	</a>
 </g>
 <g class="town" id="southern-pines">
-	<circle class="st14 dot" cx="189.8" cy="198.3" r="4.8"/>
-	<circle class="st15 outline" cx="189.8" cy="198.3" r="7.3"/>
-	<text transform="matrix(1 0 0 1 159.2046 215.0029)" class="st14 st12 st13">Southern Pines</text>
+	<a href="/towns/southern-pines">
+		<circle class="st14 dot" cx="189.8" cy="198.3" r="4.8"/>
+		<circle class="st15 outline" cx="189.8" cy="198.3" r="7.3"/>
+		<text transform="matrix(1 0 0 1 159.2046 215.0029)" class="st14 st12 st13">Southern Pines</text>
+	</a>
 </g>
 <g class="town" id="seven-lakes">
-	<circle class="st16 dot" cx="61.5" cy="134.8" r="4.8"/>
-	<circle class="st17 outline" cx="61.5" cy="134.8" r="7.3"/>
-	<text transform="matrix(1 0 0 1 36.4219 151.5029)" class="st16 st12 st13">Seven Lakes</text>
+	<a href="/towns/seven-lakes">
+		<circle class="st16 dot" cx="61.5" cy="134.8" r="4.8"/>
+		<circle class="st17 outline" cx="61.5" cy="134.8" r="7.3"/>
+		<text transform="matrix(1 0 0 1 36.4219 151.5029)" class="st16 st12 st13">Seven Lakes</text>
+	</a>
 </g>
 <g class="town" id="whispering-pines">
-	<circle class="st18 dot" cx="178.5" cy="77.3" r="4.8"/>
-	<circle class="st19 outline" cx="178.5" cy="77.3" r="7.3"/>
-	<text transform="matrix(1 0 0 1 143.9224 94.0029)" class="st18 st12 st13">Whispering Pines</text>
+	<a href="/towns/whispering-pines">
+		<circle class="st18 dot" cx="178.5" cy="77.3" r="4.8"/>
+		<circle class="st19 outline" cx="178.5" cy="77.3" r="7.3"/>
+		<text transform="matrix(1 0 0 1 143.9224 94.0029)" class="st18 st12 st13">Whispering Pines</text>
+	</a>
 </g>
 <g class="town" id="carthage">
-	<circle class="st20 dot" cx="179" cy="31.8" r="4.8"/>
-	<circle class="st21 outline" cx="179" cy="31.8" r="7.3"/>
-	<text transform="matrix(1 0 0 1 160.1812 48.5029)" class="st20 st12 st13">Carthage</text>
+	<a href="/towns/carthage">
+		<circle class="st20 dot" cx="179" cy="31.8" r="4.8"/>
+		<circle class="st21 outline" cx="179" cy="31.8" r="7.3"/>
+		<text transform="matrix(1 0 0 1 160.1812 48.5029)" class="st20 st12 st13">Carthage</text>
+	</a>
 </g>
 <g class="town" id="aberdeen">
-	<circle class="st22 dot" cx="169.5" cy="236.1" r="4.8"/>
-	<circle class="st23 outline" cx="169.5" cy="236.1" r="7.3"/>
-	<text transform="matrix(1 0 0 1 149.8716 252.7529)" class="st22 st12 st13">Aberdeen</text>
+	<a href="/towns/aberdeen">
+		<circle class="st22 dot" cx="169.5" cy="236.1" r="4.8"/>
+		<circle class="st23 outline" cx="169.5" cy="236.1" r="7.3"/>
+		<text transform="matrix(1 0 0 1 149.8716 252.7529)" class="st22 st12 st13">Aberdeen</text>
+	</a>
 </g>
 </svg>
 

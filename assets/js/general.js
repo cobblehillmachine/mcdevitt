@@ -1,10 +1,15 @@
 var stickyElement;
 jQuery( window ).load(function() {
+	jQuery('body').css('opacity', 1);
 	sellerSlider();
 	listingsSlider();
 	svgHover();
 	otherNeighborhoodToggle();
 	searchToggle();
+	navToggle();
+	widgetToggle();
+	squareMaker(jQuery('.categories a'));
+	homepageFormLabel();
 	if (jQuery('.sticky').length > 0) {
 		stickyElement = jQuery('.sticky').offset().top;
 	}
@@ -20,7 +25,7 @@ jQuery( window ).load(function() {
 	if (jQuery(window).width() > 990) {
 		
 		squareMaker(jQuery('.dsidx-photo'));
-		squareMaker(jQuery('.categories a'));
+		
 		mlsResultImages();
 	} else {
 		
@@ -172,7 +177,7 @@ function svgHover() {
 	})
 	jQuery('.dot').on("mouseenter",function() {
 		jQuery(this).siblings().css('opacity', 1);
-		var townSlug = jQuery(this).parent().attr('id');
+		var townSlug = jQuery(this).closest($('.town')).attr('id');
 		jQuery('.badge').addClass('bandw');
 		jQuery('.badge#' + townSlug).addClass('color');
 		
@@ -202,9 +207,25 @@ function mlsResultImages() {
 function searchToggle() {
 	jQuery('.search-trigger').on('click',function(e) {
 		e.preventDefault();
-		jQuery('#dsidx-quicksearch-4').toggle();
+		jQuery('.utility-nav #searchform').toggle();
     });
 }
 
 
+function navToggle() {
+	jQuery('.nav-toggle').on('click', function(e) {
+		e.preventDefault();
+		jQuery('.mobile-nav').slideToggle();
+		jQuery('.hamburger, .close').toggle();
+	})
+}
 
+function widgetToggle() {
+	jQuery('.mls-results .sidebar h3').on('click', function() {
+		jQuery('.mls-results .sidebar .widget-container').slideToggle();
+	})
+}
+
+function homepageFormLabel() {
+	jQuery('label.dsidx-resp-location').html('Where would you love to live');
+}

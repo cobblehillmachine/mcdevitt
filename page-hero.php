@@ -49,13 +49,13 @@
 		</div>
 	</div>
 <?php } else if (is_page('local-guide')) { ?>
-	<div class="gray section mid-cont center">
+	<div class="gray section mid-cont center discover">
 		<div class="skinny-cont"><?php the_field('content') ?></div>
 	</div>
 	<div class="mid-cont center section badges-wrapper">
 		<h3><?php the_field('content_title') ?></h3>
 		<div class="table section">
-			<div class="table-cell"><?php get_template_part('content', 'town-map') ?></div>
+			<div class="table-cell map"><?php get_template_part('content', 'town-map') ?></div>
 			<div class="table-cell badges">
 				<div class="table">
 					<?php $badges = new WP_query(array('post_type' => 'Towns', 'posts_per_page' => -1, 'orderby' => 'menu_order', 'order' => 'ASC')) ?>
@@ -68,6 +68,12 @@
 				</div>
 			</div>
 		</div>
+	</div>
+<?php } else if (is_page('who-we-are')) { ?>
+ 	<div class="skinny-cont center section hero-template">
+	 	<h3><?php the_field('content_title') ?></h3>
+		<?php the_field('content') ?>
+		<a class="mcdevitt-diff-button" href="/who-we-are/the-mcdevitt-difference/">The McDevitt Difference</a>
 	</div>
 	
 <?php } else { ?>
@@ -85,6 +91,7 @@
 		 <div class="table-cell">
 			 <h3 class="center">Who We Are</h3>
 			 <?php the_field('who_we_are_copy') ?>
+			 <div class="center"><a class="mcdevitt-diff-button" href="/who-we-are/our-team">Meet Our Team</a></div>
 		 </div>
 		 <div class="table-cell">
 			 <img src="<?php the_field('who_we_are_image'); ?>">
@@ -110,7 +117,7 @@
 			</div>
 		<?php endwhile; ?>
 	 </div>
-	 <p class="center"><a href="/" class="button">List with us</a></p>
+	 <p class="center"><a href="/contact" class="button">List with us</a></p>
  </div>
  
  <?php } ?>

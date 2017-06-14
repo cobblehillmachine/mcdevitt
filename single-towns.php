@@ -16,7 +16,7 @@ $geography = get_field('geography'); ?>
 
 <div class="section mid-cont table center navy-ctas">
 	<a class="table-cell smooth-scroll" href="#explore-the-neighborhoods">Explore <?php the_title() ?> Neighborhoods</a>
-	<a class="table-cell" href="#">View the <?php the_title() ?> Video</a>
+	<a class="table-cell" data-lity href='<?php the_field('video_iframe') ?>'>View the <?php the_title() ?> Video</a>
 	<a class="table-cell" href="<?php the_field('mls_link') ?>">Search All <?php the_title() ?> Homes For Sale</a>
 </div>
 

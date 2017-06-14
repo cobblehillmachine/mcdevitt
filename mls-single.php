@@ -9,7 +9,7 @@
 
 get_header();the_post(); ?>
 <div class="section border mid-cont mls mls-results">
-	<div class="skinny-cont"><?php dynamic_sidebar('homepage-hero'); ?></div>
+	<div class="skinny-cont single-form"><?php dynamic_sidebar('homepage-hero'); ?></div>
 	<div class="gray section">
 		<h2><?php the_title() ?></h2>
 		<?php the_post_thumbnail() ?>

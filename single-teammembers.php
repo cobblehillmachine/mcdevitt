@@ -9,11 +9,11 @@
 			<?php the_content() ?>
 		</div>
 	</div>
-	<div class="sticky">
+	<div class="absolute">
 		<div class="cta">
 			<h3>work with me</h3>
-			<p><i class="fa fa-phone"></i>&nbsp;<?php the_field('phone_number') ?></p>
-			<p><i class="fa fa-envelope"></i>&nbsp;<?php the_field('email_address') ?></p>
+			<p><i class="fa fa-phone"></i> <?php the_field('phone_number') ?></p>
+			<p><a href="mailto:<?php the_field('email_address') ?>"><i class="fa fa-envelope"></i><?php the_field('email_address') ?></a></p>
 			<a href="#" class="button">View My Listings</a>
 		</div>
 	</div>

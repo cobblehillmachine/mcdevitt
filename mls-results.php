@@ -16,7 +16,7 @@ get_header();the_post(); ?>
 				<?php dynamic_sidebar('mls-sidebar'); ?>
 			</div>
 			<div class="table-cell results">
-				<div class="left">
+				<div class="left flex between">
 					<h2>Real Estate Matching Your Results</h2>
 					<h3>IDX Search Results</h3>
 				</div>
